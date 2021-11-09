@@ -2,6 +2,7 @@ package com.jxl.write;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -41,5 +42,21 @@ public class Runner {
 		sheet.addCell(label);
 		writeWB.write();
 		writeWB.close();
+	}
+	
+	@Test
+	public void writeNamesToExcel() throws BiffException, IOException, RowsExceededException, WriteException {
+		
+		ArrayList <String> lstNames = new ArrayList<String>();
+		lstNames.add("Prasanga");
+		lstNames.add("Dulaj");
+		lstNames.add("Kaveesh");
+		lstNames.add("Lasan");
+		lstNames.add("Piyumi");
+		lstNames.add("Shermila");
+		
+		for(String name: lstNames) {
+			System.out.println(name);
+		}
 	}
 }
