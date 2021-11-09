@@ -2,6 +2,7 @@ package com.jxl.write.util;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
@@ -30,14 +31,16 @@ public class ExcelSheetManager {
 //		
 //	}
 //	
-	public void writeToSheet(int SheetNumber) throws BiffException, IOException, RowsExceededException, WriteException {
+	public void writeToSheet(int SheetNumber, ArrayList<String> data) throws BiffException, IOException, RowsExceededException, WriteException {
 		this.getWorkbook();
 		writeWB = Workbook.createWorkbook(new File(fileLocation), wb);
-		WritableSheet sheet = writeWB.getSheet(0);
+		WritableSheet sheet = writeWB.getSheet(SheetNumber);
 		Label label;
+		for(int i=0;i<data.size();i++) {
+			label = new Label(0,i,data.get(i)); //Here we put the cell location and the data to write
+			sheet.addCell(label);
+		}
 		
-		label = new Label(0,0,"Cell 0,0"); //Here we put the cell location and the data to write
-		sheet.addCell(label);
 		writeWB.write();
 		writeWB.close();
 	}

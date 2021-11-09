@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import com.jxl.write.util.ExcelSheetManager;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
@@ -58,5 +60,8 @@ public class Runner {
 		for(String name: lstNames) {
 			System.out.println(name);
 		}
+		
+		ExcelSheetManager excel = new ExcelSheetManager();
+		excel.writeToSheet(0, lstNames);
 	}
 }
