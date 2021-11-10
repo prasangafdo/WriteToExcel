@@ -26,14 +26,14 @@ public class Runner {
 //	}
 	
 	static WritableWorkbook writeWB;
-	@Test
+//	@Test
 	public void openBrowser() throws BiffException, IOException, RowsExceededException, WriteException {
 		
 //		WebDriverManager.chromedriver().setup();
 //		WebDriver driver = new ChromeDriver();
 //		driver.get("https://mvnrepository.com/");
 //		
-		String fileLocation = "src/test/resources/Book.xls";
+		String fileLocation = "src/test/resources/Book1.xls";
 		File file = new File(fileLocation);
 		Workbook wb = Workbook.getWorkbook(file);
 		writeWB = Workbook.createWorkbook(new File(fileLocation), wb);
@@ -62,6 +62,25 @@ public class Runner {
 		}
 		
 		ExcelSheetManager excel = new ExcelSheetManager();
-		excel.writeToSheet(0, lstNames);
+		excel.writeNameToSheet(0, lstNames);
+	}
+	
+	@Test
+	public void writeDepartmentsToExcel() throws BiffException, IOException, RowsExceededException, WriteException {
+		
+		ArrayList <String> lstDepartments = new ArrayList<String>();
+		lstDepartments.add("Corp Merchendicing");
+		lstDepartments.add("EAG");
+		lstDepartments.add("Corp Merchendicing");
+		lstDepartments.add("Commercial");
+		lstDepartments.add("Delivery");
+		lstDepartments.add("Delivery");
+		
+		for(String dept: lstDepartments) {
+			System.out.println(dept);
+		}
+		
+		ExcelSheetManager excel = new ExcelSheetManager();
+		excel.writeDepartmentToSheet(0, lstDepartments);
 	}
 }

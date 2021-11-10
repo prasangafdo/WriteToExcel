@@ -20,7 +20,7 @@ public class ExcelSheetManager {
 	private String fileLocation;
 
 	private void getWorkbook() throws BiffException, IOException {
-		fileLocation = "src/test/resources/Book.xls";
+		fileLocation = "src/test/resources/Book1.xls";
 		file = new File(fileLocation);
 		wb = Workbook.getWorkbook(file);
 		
@@ -31,13 +31,27 @@ public class ExcelSheetManager {
 //		
 //	}
 //	
-	public void writeToSheet(int SheetNumber, ArrayList<String> data) throws BiffException, IOException, RowsExceededException, WriteException {
+	public void writeNameToSheet(int SheetNumber, ArrayList<String> data) throws BiffException, IOException, RowsExceededException, WriteException {
 		this.getWorkbook();
 		writeWB = Workbook.createWorkbook(new File(fileLocation), wb);
 		WritableSheet sheet = writeWB.getSheet(SheetNumber);
 		Label label;
 		for(int i=0;i<data.size();i++) {
 			label = new Label(0,i,data.get(i)); //Here we put the cell location and the data to write
+			sheet.addCell(label);
+		}
+		
+		writeWB.write();
+		writeWB.close();
+	}
+	
+	public void writeDepartmentToSheet(int SheetNumber, ArrayList<String> data) throws BiffException, IOException, RowsExceededException, WriteException {
+		this.getWorkbook();
+		writeWB = Workbook.createWorkbook(new File(fileLocation), wb);
+		WritableSheet sheet = writeWB.getSheet(SheetNumber);
+		Label label;
+		for(int i=0;i<data.size();i++) {
+			label = new Label(1,i,data.get(i)); //Here we put the cell location and the data to write
 			sheet.addCell(label);
 		}
 		
