@@ -5,7 +5,8 @@
     <classes>
       <class name="com.jxl.write.Runner">
         <methods>
-          <include name="openBrowser"/>
+          <include name="writeDepartmentsToExcel"/>
+          <include name="writeNamesToExcel"/>
         </methods>
       </class> <!-- com.jxl.write.Runner -->
     </classes>
